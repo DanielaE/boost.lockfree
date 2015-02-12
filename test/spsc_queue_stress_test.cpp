@@ -34,7 +34,7 @@ struct spsc_queue_tester
 {
     spsc_queue<int, capacity<128> > sf;
 
-    boost::lockfree::detail::atomic<long> spsc_queue_cnt, received_nodes;
+    boost::lockfree::detail::atomic<size_t> spsc_queue_cnt, received_nodes;
 
     static_hashed_set<int, 1<<16 > working_set;
 
@@ -66,6 +66,7 @@ struct spsc_queue_tester
             --spsc_queue_cnt;
             bool erased = working_set.erase(data);
             assert(erased);
+            (void)erased;
             return true;
         } else
             return false;
@@ -116,7 +117,7 @@ struct spsc_queue_tester_buffering
 {
     spsc_queue<int, capacity<128> > sf;
 
-    boost::lockfree::detail::atomic<long> spsc_queue_cnt;
+    boost::lockfree::detail::atomic<size_t> spsc_queue_cnt;
 
     static_hashed_set<int, 1<<16 > working_set;
     boost::lockfree::detail::atomic<size_t> received_nodes;
@@ -162,6 +163,7 @@ struct spsc_queue_tester_buffering
             for (size_t i = 0; i != popd; ++i) {
                 bool erased = working_set.erase(output_buffer[i]);
                 assert(erased);
+               (void)erased;
             }
 
             return true;
