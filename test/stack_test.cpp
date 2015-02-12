@@ -152,7 +152,7 @@ BOOST_AUTO_TEST_CASE( stack_consume_all_test )
 #ifdef BOOST_NO_CXX11_LAMBDAS
     size_t consumed = f.consume_all(dummy_functor());
 #else
-    size_t consumed = f.consume_all([] (int i) {
+    size_t consumed = f.consume_all([] (int) {
     });
 #endif
 
