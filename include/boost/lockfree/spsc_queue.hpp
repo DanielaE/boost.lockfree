@@ -34,6 +34,11 @@
 #pragma once
 #endif
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost    {
 namespace lockfree {
 namespace detail   {
@@ -996,6 +1001,10 @@ public:
 
 } /* namespace lockfree */
 } /* namespace boost */
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 
 #endif /* BOOST_LOCKFREE_SPSC_QUEUE_HPP_INCLUDED */
