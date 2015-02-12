@@ -90,6 +90,9 @@ private:
         typedef typename detail::select_tagged_handle<node, node_based>::handle_type handle_t;
         handle_t next;
         const T v;
+
+    private:
+        node& operator=(const node&);
     };
 
     typedef typename detail::extract_allocator<bound_args, node>::type node_allocator;

@@ -58,6 +58,9 @@ struct consume_via_copy
     }
 
     T & out_;
+
+private:
+    consume_via_copy& operator=(const consume_via_copy&);
 };
 
 struct consume_noop

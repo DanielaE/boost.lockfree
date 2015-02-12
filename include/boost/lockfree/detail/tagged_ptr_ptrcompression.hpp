@@ -56,7 +56,7 @@ private:
     {
         cast_unit ret;
         ret.value = compressed_ptr_t(ptr);
-        ret.tag[tag_index] = tag;
+        ret.tag[tag_index] = static_cast<tag_t>(tag);
         return ret.value;
     }
 
