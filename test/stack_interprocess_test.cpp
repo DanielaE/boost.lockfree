@@ -49,6 +49,7 @@ int main (int argc, char *argv[])
         for (int i = 0; i != 1024; ++i) {
             bool success = queue->pop(from_queue);
             assert (success);
+            (void)success;
             assert (from_queue == 1023 - i);
         }
         segment.destroy<stack>("stack");
