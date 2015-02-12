@@ -29,6 +29,7 @@
 #pragma warning(push)
 #pragma warning(disable: 4100) // unreferenced formal parameter
 #pragma warning(disable: 4127) // conditional expression is constant
+#pragma warning(disable: 4189) // variable is initialized but not referenced
 #endif
 
 namespace boost    {
@@ -480,7 +481,7 @@ public:
     void destruct (T * n)
     {
         n->~T();
-        deallocate<ThreadSafe>(n - NodeStorage::nodes());
+        deallocate<ThreadSafe>(static_cast<index_t>(n - NodeStorage::nodes()));
     }
 
     bool is_lock_free(void) const
