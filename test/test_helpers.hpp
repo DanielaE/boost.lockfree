@@ -14,6 +14,10 @@
 
 #include <boost/cstdint.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 template <typename int_type>
 int_type generate_id(void)
 {

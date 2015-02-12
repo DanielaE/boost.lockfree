@@ -171,6 +171,7 @@ struct freelist_tester
                 if (node) {
                     bool success = working_set.insert(node);
                     assert(success);
+                    (void)success;
                     allocated_nodes.push(node);
                     break;
                 }
@@ -185,6 +186,7 @@ struct freelist_tester
             if (allocated_nodes.pop(node)) {
                 bool success = working_set.erase(node);
                 assert(success);
+                (void)success;
                 fl.template destruct<true>(node);
             }
 
@@ -196,7 +198,8 @@ struct freelist_tester
         while (allocated_nodes.pop(node)) {
             bool success = working_set.erase(node);
             assert(success);
-            fl.template destruct<true>(node);
+            (void)success;
+           fl.template destruct<true>(node);
         }
     }
 };
