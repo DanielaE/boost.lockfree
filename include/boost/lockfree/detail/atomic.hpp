@@ -16,6 +16,7 @@
 // MSVC supports atomic<> from version 2012 onwards.
 #if defined(BOOST_MSVC) && (BOOST_MSVC >= 1700)
 #undef BOOST_LOCKFREE_NO_HDR_ATOMIC
+#define _ENABLE_ATOMIC_ALIGNMENT_FIX 1
 #endif
 
 
