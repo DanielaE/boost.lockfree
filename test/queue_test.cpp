@@ -161,7 +161,7 @@ BOOST_AUTO_TEST_CASE( queue_convert_pop_test )
     }
 
     {
-        auto_ptr<int> i3;
+        unique_ptr<int> i3;
         BOOST_REQUIRE(f.pop(i3));
 
         BOOST_REQUIRE_EQUAL(*i3, 3);
